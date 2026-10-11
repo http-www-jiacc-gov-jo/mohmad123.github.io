@@ -3,76 +3,744 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>محمود | الصفحة الرئيسية</title>
+    <title>محمود | Portfolio</title>
+    <meta
+      name="description"
+      content="صفحتي الشخصية - محمد/محمود، مطور ويب ومصمم واجهات."
+    />
     <style>
       :root {
-        --bg: #0f172a;
-        --card: #111827;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --accent: #38bdf8;
-        --accent-2: #22c55e;
+        --bg: #07111f;
+        --bg-2: #0f172a;
+        --card: rgba(15, 23, 42, 0.75);
+        --card-strong: #111827;
+        --text: #e5eefb;
+        --muted: #9fb1c7;
+        --primary: #5eead4;
+        --secondary: #60a5fa;
+        --accent: #c084fc;
+        --line: rgba(148, 163, 184, 0.2);
+        --success: #34d399;
       }
-      * { box-sizing: border-box; }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, var(--bg), #1e293b);
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(96, 165, 250, 0.18), transparent 28%),
+          radial-gradient(circle at bottom left, rgba(192, 132, 252, 0.2), transparent 25%),
+          linear-gradient(135deg, var(--bg), var(--bg-2));
         color: var(--text);
-        min-height: 100vh;
+        line-height: 1.7;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(7, 17, 31, 0.6);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 70px;
+        gap: 16px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .brand span {
+        color: var(--primary);
+      }
+
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .menu a {
+        color: var(--muted);
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+      }
+
+      .menu a:hover {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        color: #041521;
+        box-shadow: 0 12px 30px rgba(94, 234, 212, 0.2);
+      }
+
+      .btn-secondary {
+        border-color: var(--line);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .hero {
+        padding: 86px 0 60px;
+      }
+
+      .hero-grid {
         display: grid;
-        place-items: center;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 32px;
       }
-      .card {
-        width: min(90vw, 700px);
-        background: rgba(17, 24, 39, 0.9);
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        border-radius: 18px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-        padding: 40px 30px;
-        text-align: center;
-      }
-      .badge {
+
+      .eyebrow {
         display: inline-block;
-        background: rgba(56, 189, 248, 0.15);
-        color: var(--accent);
-        border: 1px solid rgba(56, 189, 248, 0.3);
         padding: 8px 14px;
         border-radius: 999px;
-        font-size: 14px;
+        background: rgba(94, 234, 212, 0.08);
+        border: 1px solid rgba(94, 234, 212, 0.18);
+        color: var(--primary);
+        font-size: 0.82rem;
         margin-bottom: 18px;
       }
+
       h1 {
-        margin: 0 0 12px;
-        font-size: clamp(2rem, 5vw, 3.2rem);
+        margin: 0;
+        font-size: clamp(2.3rem, 5vw, 5rem);
+        line-height: 1.12;
       }
-      p {
+
+      .gradient-text {
+        background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        margin: 20px 0 30px;
+        max-width: 620px;
         color: var(--muted);
-        font-size: 1.1rem;
-        line-height: 1.8;
-        margin: 0 auto 24px;
-        max-width: 560px;
+        font-size: 1.08rem;
       }
-      .cta {
-        display: inline-block;
-        padding: 14px 24px;
-        border-radius: 10px;
-        text-decoration: none;
-        color: white;
-        background: linear-gradient(90deg, var(--accent), var(--accent-2));
-        font-weight: bold;
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 26px;
+      }
+
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+      }
+
+      .stat {
+        min-width: 120px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.7rem;
+        color: var(--text);
+      }
+
+      .stat span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .profile-box {
+        position: relative;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 26px;
+        box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+      }
+
+      .avatar {
+        width: 100%;
+        aspect-ratio: 1 / 1.08;
+        border-radius: 22px;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(96, 165, 250, 0.18), rgba(192, 132, 252, 0.18));
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        font-size: clamp(5rem, 12vw, 8rem);
+        margin-bottom: 18px;
+      }
+
+      .mini-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 18px;
+      }
+
+      .mini-card strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .mini-card span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--success);
+        box-shadow: 0 0 0 8px rgba(52, 211, 153, 0.12);
+      }
+
+      section {
+        padding: 28px 0 36px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+      }
+
+      .section-head span {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .about-grid,
+      .skills-grid,
+      .projects-grid,
+      .contact-grid {
+        display: grid;
+        gap: 22px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .card-box {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px;
+      }
+
+      .about-text p {
+        color: var(--muted);
+        margin: 0 0 14px;
+        font-size: 1rem;
+      }
+
+      .info-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px 18px;
+        margin-top: 18px;
+      }
+
+      .info-item {
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+      }
+
+      .info-item small {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
+      .info-item strong {
+        font-size: 0.98rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .skill {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px 20px;
+      }
+
+      .skill .icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.15), rgba(96, 165, 250, 0.15));
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
+
+      .skill h3 {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+      }
+
+      .skill ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .skill li {
+        margin: 8px 0;
+        position: relative;
+        padding-right: 18px;
+      }
+
+      .skill li::before {
+        content: "•";
+        position: absolute;
+        right: 0;
+        color: var(--primary);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .project-thumb {
+        height: 180px;
+        background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(96, 165, 250, 0.2), rgba(192, 132, 252, 0.18));
+        display: grid;
+        place-items: center;
+        font-size: 3rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project-body {
+        padding: 18px 18px 22px;
+      }
+
+      .project-body h3 {
+        margin: 0 0 10px;
+      }
+
+      .project-body p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tags span {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: rgba(96, 165, 250, 0.08);
+        color: #dfeeff;
+        border: 1px solid rgba(96, 165, 250, 0.18);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-box {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+      }
+
+      .contact-item strong {
+        color: var(--text);
+      }
+
+      .icon-circle {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: rgba(94, 234, 212, 0.08);
+        border: 1px solid rgba(94, 234, 212, 0.18);
+      }
+
+      footer {
+        padding: 30px 0 50px;
+        color: var(--muted);
+        text-align: center;
+        border-top: 1px solid var(--line);
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .skills-grid,
+        .projects-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          justify-content: center;
+          padding: 8px 0 14px;
+        }
+
+        .menu {
+          justify-content: center;
+          gap: 12px 18px;
+        }
+
+        .skills-grid,
+        .projects-grid,
+        .info-list {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .hero {
+          padding-top: 56px;
+        }
       }
     </style>
   </head>
   <body>
-    <main class="card">
-      <div class="badge">GitHub Pages</div>
-      <h1>مرحباً بك في صفحتي</h1>
-      <p>
-        هذا مثال بسيط لصفحة تم نشرها عبر GitHub Pages. يمكنك تعديل هذا الملف لتغيير النص,
-        الألوان, أو التصميم حسب احتياجك.
-      </p>
-      <a class="cta" href="https://github.com/mM19913/mohmad123.github.io">عرض المستودع</a>
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand">محمد<span>.</span></div>
+        <nav class="menu" aria-label="التنقل">
+          <a href="#about">من أنا</a>
+          <a href="#skills">مهارات</a>
+          <a href="#projects">مشاريعي</a>
+          <a href="#contact">تواصل</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">مطور ويب • مصمم واجهات</div>
+            <h1>
+              أبدع <span class="gradient-text">تجارب رقمية</span>
+              سهلة ومذهلة
+            </h1>
+            <p class="lead">
+              أُصمم وأبني مواقع حديثة ومهنية تساعد المشاريع على النمو، مع تركيز على الأداء
+              وتجربة المستخدم والهوية البصرية.
+            </p>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#projects">مشاهدة أعمالي</a>
+              <a class="btn btn-secondary" href="#contact">تواصل معي</a>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>3+</strong>
+                <span>سنوات خبرة</span>
+              </div>
+              <div class="stat">
+                <strong>12+</strong>
+                <span>مشروع مكتمل</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>التزام بالجودة</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-box">
+            <div class="avatar">👨‍💻</div>
+            <div class="mini-card">
+              <div>
+                <strong>محمود</strong>
+                <span>Frontend Developer</span>
+              </div>
+              <div class="dot" aria-label="متاح الآن"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head">
+            <h2>من أنا</h2>
+            <span>About me</span>
+          </div>
+
+          <div class="about-grid">
+            <div class="card-box about-text">
+              <p>
+                أنا مطور ويب متحمس لبناء تجارب رقمية واضحة وسريعة ومريحة للمستخدم، أركز
+                على واجهات حديثة، تصميم احترافي، وسهولة الاستخدام.
+              </p>
+              <p>
+                أعمل على تحويل الأفكار إلى حلول عملية تُناسب احتياجات العملاء، سواءً كان
+                مشروعًا شخصيًا أو متجرًا إلكترونيًا أو عرضًا احترافيًا للشركات.
+              </p>
+            </div>
+
+            <div class="card-box">
+              <div class="info-list">
+                <div class="info-item">
+                  <small>الاسم</small>
+                  <strong>محمد / محمود</strong>
+                </div>
+                <div class="info-item">
+                  <small>الخبرة</small>
+                  <strong>3+ سنوات</strong>
+                </div>
+                <div class="info-item">
+                  <small>الموقع</small>
+                  <strong>السعودية</strong>
+                </div>
+                <div class="info-item">
+                  <small>التخصص</small>
+                  <strong>Web Development</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-head">
+            <h2>مهاراتي</h2>
+            <span>Skills</span>
+          </div>
+
+          <div class="skills-grid">
+            <article class="skill">
+              <div class="icon">💻</div>
+              <h3>Frontend</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS3 / Sass</li>
+                <li>JavaScript</li>
+                <li>Responsive Design</li>
+              </ul>
+            </article>
+
+            <article class="skill">
+              <div class="icon">⚙️</div>
+              <h3>Frameworks</h3>
+              <ul>
+                <li>React</li>
+                <li>Vue</li>
+                <li>Bootstrap</li>
+                <li>Tailwind CSS</li>
+              </ul>
+            </article>
+
+            <article class="skill">
+              <div class="icon">🎨</div>
+              <h3>Design</h3>
+              <ul>
+                <li>UI/UX</li>
+                <li>Branding</li>
+                <li>Landing Pages</li>
+                <li>Modern Interfaces</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-head">
+            <h2>مشاريعي</h2>
+            <span>Portfolio</span>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project">
+              <div class="project-thumb">🏢</div>
+              <div class="project-body">
+                <h3>موقع شركة</h3>
+                <p>تصميم موقع احترافي لشركة بتصميم أنيق وتجربة مستخدم ممتازة.</p>
+                <div class="tags">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>JS</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-thumb">🛍️</div>
+              <div class="project-body">
+                <h3>متجر إلكتروني</h3>
+                <p>واجهة متجر تفاعلية وسريعة لعرض المنتجات وتحسين تجربة الشراء.</p>
+                <div class="tags">
+                  <span>React</span>
+                  <span>UI/UX</span>
+                  <span>Responsive</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-thumb">📈</div>
+              <div class="project-body">
+                <h3>لوحة تحكم</h3>
+                <p>تطبيق لوحة تحكم لإدارة البيانات وعرض الإحصائيات بشكل مرئي واضح.</p>
+                <div class="tags">
+                  <span>Dashboard</span>
+                  <span>Design</span>
+                  <span>Charts</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-head">
+            <h2>تواصل معي</h2>
+            <span>Contact</span>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-box">
+              <div class="contact-list">
+                <div class="contact-item">
+                  <div class="icon-circle">📧</div>
+                  <div>
+                    <strong>البريد الإلكتروني</strong><br />
+                    example@email.com
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="icon-circle">📱</div>
+                  <div>
+                    <strong>الهاتف</strong><br />
+                    +966 5xx xxx xxx
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="icon-circle">💼</div>
+                  <div>
+                    <strong>LinkedIn</strong><br />
+                    linkedin.com/in/yourname
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-box">
+              <p style="color: var(--muted); margin-top: 0;">
+                إذا كنت تبحث عن شريك لتصميم موقع احترافي أو تطوير واجهة حديثة، فلا تتردد
+                في التواصل معي. سأكون سعيدًا بمناقشة فكرة مشروعك.
+              </p>
+              <a class="btn btn-primary" href="mailto:example@email.com">إرسال رسالة</a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer>
+      <div class="container">© 2026 - جميع الحقوق محفوظة</div>
+    </footer>
   </body>
 </html>
