@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محمود | الصفحة الرئيسية</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #111827;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #38bdf8;
+        --accent-2: #22c55e;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, var(--bg), #1e293b);
+        color: var(--text);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      .card {
+        width: min(90vw, 700px);
+        background: rgba(17, 24, 39, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 18px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+        padding: 40px 30px;
+        text-align: center;
+      }
+      .badge {
+        display: inline-block;
+        background: rgba(56, 189, 248, 0.15);
+        color: var(--accent);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 14px;
+        margin-bottom: 18px;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+      }
+      p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin: 0 auto 24px;
+        max-width: 560px;
+      }
+      .cta {
+        display: inline-block;
+        padding: 14px 24px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="badge">GitHub Pages</div>
+      <h1>مرحباً بك في صفحتي</h1>
+      <p>
+        هذا مثال بسيط لصفحة تم نشرها عبر GitHub Pages. يمكنك تعديل هذا الملف لتغيير النص,
+        الألوان, أو التصميم حسب احتياجك.
+      </p>
+      <a class="cta" href="https://github.com/mM19913/mohmad123.github.io">عرض المستودع</a>
+    </main>
+  </body>
+</html>
